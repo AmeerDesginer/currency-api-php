@@ -3,7 +3,7 @@ a class to make currency api more easy
 
 # example:
 
-```
+```php
 <?php
 
 include './currency.php';
