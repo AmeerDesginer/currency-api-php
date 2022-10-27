@@ -15,7 +15,7 @@ $currency->setMode('demo'); // demo | live // You can switch between demo or liv
 $currency->setAPIKey($API_KEY);
 $currency->setAPISecret($API_SECRET);
 
-                                      // path | You can see all pathes at https://apitradedoc.currency.com/swagger-ui.html
+                                      // path | You can see all paths at https://apitradedoc.currency.com/swagger-ui.html
 $accountResponse = $currency->request("account", [], "GET");
 
 echo '<pre>';
