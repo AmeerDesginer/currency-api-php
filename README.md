@@ -4,7 +4,6 @@ a class to make currency api more easy
 # example:
 
 ```
-
 <?php
 
 include './currency.php';
@@ -24,5 +23,4 @@ $accountResponse = $currency->request("account", [], "GET");
 echo '<pre>';
 print_r(json_decode($accountResponse));
 echo '</pre>';
-
 ```
