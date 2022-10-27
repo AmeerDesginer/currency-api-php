@@ -3,7 +3,7 @@ a class to make currency api more easy
 
 # example:
 
-`
+```
 
 <?php
 
@@ -25,4 +25,4 @@ echo '<pre>';
 print_r(json_decode($accountResponse));
 echo '</pre>';
 
-`
+```
