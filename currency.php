@@ -18,7 +18,21 @@ class currency {
         $this->apiSecret = $apiSecret;
     }
     
-    function request($path , $querys, $method) {
+    function getHash($querys, $timestamp) {
+        $querys['apiKey'] = $this->apikey;
+        $querys['timestamp'] = $timestamp;
+        $querys = array_reverse($querys);
+        $qS = "";
+        if (!empty($querys)) {
+            foreach ($querys as $querysStaticKey => $queryStatic) {
+                $qS .= $querysStaticKey . "=" . $queryStatic . "&";
+            }
+        }
+        $qS = rtrim($qS, "&");
+        return hash_hmac('SHA256', $qS, $this->apiSecret);
+    }
+    
+    function request($path, $querys, $method) {
         
         if ($this->mode == "demo") {
             $baseUrl = "https://demo-api-adapter.backend.currency.com/api/v2/";
@@ -29,7 +43,7 @@ class currency {
         
         $querysStatic = [
             "timestamp" => $timestamp,
-            "signature" => hash_hmac('sha256', "apiKey=" . $this->apikey . "&timestamp=" . $timestamp, $this->apiSecret),
+            "signature" => $this->getHash($querys, $timestamp),
         ];
         
         $qS;
