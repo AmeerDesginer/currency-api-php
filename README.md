@@ -6,7 +6,7 @@ a class to make currency api more easy
 ```php
 include './currency.php';
 
-$API_KEY = 'XXXXXXXX'; // you can get onw in your currency account
+$API_KEY = 'XXXXXXXX'; // you can get on in your currency account
 $API_SECRET = 'XXXXXXXXXXXXXXXXX'; // you can get onw in your currency account
 
 $currency = new currency();
