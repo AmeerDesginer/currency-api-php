@@ -19,17 +19,14 @@ class currency {
     }
     
     function getHash($querys, $timestamp) {
-        $querys['apiKey'] = $this->apikey;
         $querys['timestamp'] = $timestamp;
         $querys = array_reverse($querys);
         $qS = "";
-        if (!empty($querys)) {
-            foreach ($querys as $querysStaticKey => $queryStatic) {
-                $qS .= $querysStaticKey . "=" . $queryStatic . "&";
-            }
+        foreach ($querys as $key => $value) {
+            $qS .= $key . "=" . $value . "&";
         }
         $qS = rtrim($qS, "&");
-        return hash_hmac('SHA256', $qS, $this->apiSecret);
+        return hash_hmac('SHA256',  "apiKey=" . $this->apiKey . "&" . $qS, $this->apiSecret);
     }
     
     function request($path, $querys, $method) {
